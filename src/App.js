@@ -8,8 +8,25 @@ class App extends Component {
     super();
     this.state = {
       route: 'signin',
+      user: {
+        id: '',
+        name: '',
+        email: '',
+        joined: '',
+      },
     };
   }
+
+  loadeUser = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        joined: data.joined,
+      },
+    });
+  };
 
   onRouteChange = (route) => {
     this.setState({ route: route });
@@ -23,7 +40,7 @@ class App extends Component {
         ) : this.state.route === 'signin' ? (
           <Signin onRouteChange={this.onRouteChange} />
         ) : (
-          <Register onRouteChange={this.onRouteChange} />
+          <Register onRouteChange={this.onRouteChange} loadeUser={this.loadeUser} />
         )}
       </div>
     );
