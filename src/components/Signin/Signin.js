@@ -1,8 +1,8 @@
 import React from 'react';
 
 class Signin extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       signInEmail: '',
       signInPassword: '',
@@ -29,6 +29,7 @@ class Signin extends React.Component {
       .then((response) => response.json())
       .then((user) => {
         if (user.id) {
+          this.props.loadeUser(user);
           this.props.onRouteChange('home');
         }
       });

@@ -42,7 +42,6 @@ class Register extends React.Component {
   };
 
   render() {
-    const { onRouteChange } = this.props;
     return (
       <main className="pa4 dark-green-80">
         <div className="measure center">
